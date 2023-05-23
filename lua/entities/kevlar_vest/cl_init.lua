@@ -6,10 +6,10 @@ kevlarVest:SetNoDraw( true )
 local offsetvec = Vector( -1, 1.8, 0 )
 local offsetang = Angle( 0, 91, 90 )
 
-hook.Add( "PostPlayerDraw" , "ras_PostPlayerDraw" , function( ply )
+local function DrawArmor( ply )
     
-    if ( ply:GetNWBool( "wearingKevlar" ) == true ) then -- Checks if the player is already wearing a kevlar vest
-        if not IsValid( ply ) or not ply:Alive() then return end -- Makes sure the player is valid and alive
+    if ( ply:GetNWBool( "wearingKevlar" ) == true ) then
+        if not IsValid( ply ) or not ply:Alive() then return end
 
         local boneid = ply:LookupBone( "ValveBiped.Bip01_Spine2" )
         if not boneid then return end
@@ -24,4 +24,10 @@ hook.Add( "PostPlayerDraw" , "ras_PostPlayerDraw" , function( ply )
         kevlarVest:DrawModel()
     end
 
-end )
+end
+
+hook.Add( "PostPlayerDraw", "ras_PostPlayerDraw", DrawArmor )
+
+--------------------------------
+--[ @NoxTGM on all platforms ]--
+--------------------------------
