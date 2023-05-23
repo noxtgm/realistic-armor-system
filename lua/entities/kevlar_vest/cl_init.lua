@@ -17,6 +17,7 @@ local function DrawArmor( ply )
         local matrix = ply:GetBoneMatrix( boneid )
         if not matrix then return end
         
+        -- Draw the kevlar vest model on the calculated position and angle
         local newpos, newang = LocalToWorld( offsetvec, offsetang, matrix:GetTranslation(), matrix:GetAngles() )
         kevlarVest:SetPos( newpos )
         kevlarVest:SetAngles( newang )
