@@ -4,11 +4,9 @@ include( "shared.lua" )
 function ENT:Initialize()
 
     self:SetModel( "models/weapons/thenextscp/vest_w.mdl" )
-    self:PhysicsInit( SOLID_VPHYSICS )
-    self:SetMoveType( MOVETYPE_VPHYSICS )
-    self:SetSolid( SOLID_VPHYSICS )
-    self:SetUseType( SIMPLE_USE )
-	self:SetCollisionGroup( COLLISION_GROUP_WEAPON )
+    self:PhysicsInit( SOLID_VPHYSICS ) -- Use the PhysObjects of the entity
+	self:SetCollisionGroup( COLLISION_GROUP_WEAPON ) -- Doesn't collide with players and vehicles
+    self:SetUseType( SIMPLE_USE ) -- Fire a USE_ON signal only once when player presses their use key
 	self:SetNWInt( "kevlarDurability", 100 )
 
     local phys = self:GetPhysicsObject()
