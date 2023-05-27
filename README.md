@@ -1,6 +1,7 @@
 # Realistic Armor System
 
-A realistic armor system addon for Garry's Mod.
+A realistic armor system addon for Garry's Mod. Equip and unequip kevlar vests with each their individual durability.
+Current model from: https://steamcommunity.com/sharedfiles/filedetails/?id=1801671498
 
 ## ⚙️ Installation
 
