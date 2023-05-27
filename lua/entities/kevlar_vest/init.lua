@@ -1,33 +1,37 @@
-AddCSLuaFile( "shared.lua" )
-include( "shared.lua" )
+AddCSLuaFile("shared.lua")
+include("shared.lua")
 
 function ENT:Initialize()
-    self:SetModel( "models/weapons/thenextscp/vest_w.mdl" )
-    self:PhysicsInit( SOLID_VPHYSICS )
-    self:SetMoveType( MOVETYPE_VPHYSICS )
-    self:SetSolid( SOLID_VPHYSICS )
-    self:SetUseType( SIMPLE_USE )
-	self:SetNWInt( "kevlarDurability", 100 ) -- Set the initial vest durability to 100
+
+    self:SetModel("models/weapons/thenextscp/vest_w.mdl") -- TODO: Config var for the model reference
+    self:PhysicsInit(SOLID_VPHYSICS) -- Use the PhysObjects of the entity
+	self:SetCollisionGroup(COLLISION_GROUP_WEAPON) -- Doesn't collide with players and vehicles
+    self:SetUseType(SIMPLE_USE) -- Fire a USE_ON signal only once when player presses their use key
+	self:SetNWInt("kevlarDurability", 100)
 
     local phys = self:GetPhysicsObject()
 
     if phys:IsValid() then
         phys:Wake()
     end
+
 end
 
-function ENT:Use( ply )
+function ENT:Use(ply)
 
-    if ( ply:GetNWBool( "wearingKevlar" ) == true ) then -- Checks if the player is already wearing a kevlar vest
-        ply:PrintMessage( HUD_PRINTCENTER, "You are already wearing a kevlar vest" )
+    if ply:GetNWBool("wearingKevlar") == true then
+        if NotifyAlreadyEquipped then ply:PrintMessage(HUD_PRINTCENTER, LanguageAlreadyEquippedMessage) end -- TODO: Implement new notification system
     return end
+    
+    if NotifyPlayerOnEquip then ply:PrintMessage(HUD_PRINTCENTER, LanguageEquipMessage) end -- TODO: Implement new notification system
 
-    ply:PrintMessage( HUD_PRINTCENTER, "You have equipped a kevlar vest" )
-    ply:SetArmor( self:GetNWInt( "kevlarDurability" ) ) -- Set the player's armor to the durability of the kevlar vest
-    sound.Play( "helmet_pickup.wav", Vector( ply:GetPos() ) ) -- Emit the pickup sound on the player's position
-
+    ply:SetArmor(self:GetNWInt("kevlarDurability"))
+    sound.Play("helmet_pickup.wav", Vector(ply:GetPos())) -- TODO: Change equip sound
+    
     self:Remove()
 
-	ply:SetNWBool( "wearingKevlar", true )
+	ply:SetNWBool("wearingKevlar", true)
     
 end
+
+--[ @NoxTGM on all platforms ]--
