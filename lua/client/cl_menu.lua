@@ -1,9 +1,3 @@
-local frame = vgui.Create("DFrame")
-
-frame:SetSize(1200, 720)
-frame:SetPos(100, 100)
-frame:SetVisible(true)
- 
 ---------------------------------[ MENU ]-----------------------------------
 
 function RASSettings(panel)
