@@ -1,34 +1,54 @@
-include( "shared.lua" )
+include("shared.lua")
 
-local kevlarVest = ClientsideModel( "models/weapons/thenextscp/vest_w.mdl" )
-kevlarVest:SetNoDraw( true )
+---------------------------------[ FONTS ]----------------------------------
 
-local offsetvec = Vector( -1, 1.8, 0 )
-local offsetang = Angle( 0, 91, 90 )
+surface.CreateFont("KevlarVestFont", {
+	font = "Rubik Light",
+	extended = false,
+	size = 15,
+	weight = 500,
+	blursize = 0,
+	scanlines = 0,
+	antialias = true,
+	underline = false,
+	italic = false,
+	strikeout = false,
+	symbol = false,
+	rotary = false,
+	shadow = false,
+	additive = false,
+	outline = false,
+})
 
-local function DrawArmor( ply )
-    
-    if ( ply:GetNWBool( "wearingKevlar" ) == true ) then
-        if not IsValid( ply ) or not ply:Alive() then return end
+-------------------------------[ FUNCTIONS ]--------------------------------
 
-        local boneid = ply:LookupBone( "ValveBiped.Bip01_Spine2" )
-        if not boneid then return end
+function ENT:Draw()
 
-        local matrix = ply:GetBoneMatrix( boneid )
-        if not matrix then return end
-        
-        -- Draw the kevlar vest model on the calculated position and angle
-        local newpos, newang = LocalToWorld( offsetvec, offsetang, matrix:GetTranslation(), matrix:GetAngles() )
-        kevlarVest:SetPos( newpos )
-        kevlarVest:SetAngles( newang )
-        kevlarVest:SetupBones()
-        kevlarVest:DrawModel()
-    end
+    self:DrawModel()
+
+	local ang = self:GetAngles()
+	ang:RotateAroundAxis(self:GetAngles():Right(), -90)
+
+	local pos = self:GetPos()
+
+	cam.Start3D2D(pos, ang, 1)
+
+		draw.RoundedBox(2, 0, 0, 100, 25, Color(255, 120, 120))
+		draw.RoundedBox(2, 0, 0, 50, 25, Color(25, 120, 120))
+        draw.DrawText(eyetrace.Entity:GetNWInt("kevlarDurability") .. "/100", "KevlarVestFont", ScrW() / 2, ScrH() / 2, Color(255, 255, 255), TEXT_ALIGN_CENTER)
+
+	cam.End3D2D()
 
 end
 
-hook.Add( "PostPlayerDraw", "ras_PostPlayerDraw", DrawArmor )
+---------------------------------[ HOOKS ]----------------------------------
 
---------------------------------
---[ @NoxTGM on all platforms ]--
---------------------------------
+hook.Add("HUDPaint", "kevlarVest_HUDPaint", function()
+
+    local eyetrace = LocalPlayer():GetEyeTrace()
+
+    if eyetrace.Entity:GetClass() == "kevlar_vest" then
+        draw.DrawText(eyetrace.Entity:GetNWInt("kevlarDurability") .. "/100", "KevlarVestFont", ScrW() / 2, ScrH() / 2, Color(255, 255, 255), TEXT_ALIGN_CENTER)
+    end
+
+end)
