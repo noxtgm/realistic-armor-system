@@ -1,12 +1,14 @@
+util.AddNetworkString("dropKevlarVest")
+
 -------------------------------[ FUNCTIONS ]--------------------------------
 
-local function DropArmor(ply)
+local function DropArmor(len, ply)
 
     if ply:GetNWBool("wearingKevlar") == false then
-        if NotifyNothingEquipped then ply:PrintMessage(HUD_PRINTCENTER, LanguageNothingEquippedMessage) end -- TODO: Implement new notification system
+        --if ras.NotifyNothingEquipped then ply:PrintMessage(HUD_PRINTCENTER, ras.LanguageNothingEquippedMessage) end -- TODO: Implement new notification system
     return end
     
-    if NotifyOnUnequip then ply:PrintMessage(HUD_PRINTCENTER, LanguageUnequipMessage) end -- TODO: Implement new notification system
+    --if ras.NotifyOnUnequip then ply:PrintMessage(HUD_PRINTCENTER, ras.LanguageUnequipMessage) end -- TODO: Implement new notification system
 
     -- Create a new kevlar entity on the player's position
     -- Store the player's armor count as the entity's durability
@@ -18,19 +20,21 @@ local function DropArmor(ply)
     
     -- Reset the player's armor and player stored int to 0 
     -- Notify the player by emitting a sound on his position
-    sound.Play("helmet_pickup.wav", Vector(ply:GetPos())) -- TODO: Change unequip sound
+    sound.Play("helmet_pickup.wav", Vector(ply:GetPos())) -- TODO: Implement config
     ply:SetArmor(0)
     ply:SetNWInt("kevlarDurability", 0)
     ply:SetNWBool("wearingKevlar", false)
-    
+
 end
+
+net.Receive("dropKevlarVest", DropArmor)
 
 ---------------------------------[ HOOKS ]----------------------------------
 
 hook.Add("PlayerDeath", "ras_PlayerDeath", DropArmor)
 
---------------------------------[ ConCMDs ]---------------------------------
+--------------------------------[ CONCMDS ]---------------------------------
 
-concommand.Add("unequipKevlar", DropArmor)
+concommand.Add("unequip_kevlar_vest", DropArmor)
 
 --[ @NoxTGM on all platforms ]--

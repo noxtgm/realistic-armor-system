@@ -5,7 +5,7 @@ include("shared.lua")
 surface.CreateFont("KevlarVestFont", {
 	font = "Rubik Light",
 	extended = false,
-	size = 15,
+	size = 30,
 	weight = 500,
 	blursize = 0,
 	scanlines = 0,
@@ -31,24 +31,11 @@ function ENT:Draw()
 
 	local pos = self:GetPos()
 
-	cam.Start3D2D(pos, ang, 1)
+	cam.Start3D2D(pos, ang, 0.05)
 
-		draw.RoundedBox(2, 0, 0, 100, 25, Color(255, 120, 120))
-		draw.RoundedBox(2, 0, 0, 50, 25, Color(25, 120, 120))
-        draw.DrawText(eyetrace.Entity:GetNWInt("kevlarDurability") .. "/100", "KevlarVestFont", ScrW() / 2, ScrH() / 2, Color(255, 255, 255), TEXT_ALIGN_CENTER)
+		draw.RoundedBox(2, -40, -25, 25, 50, Color(25, 120, 120))
+        draw.DrawText(self:GetNWInt("kevlarDurability") .. "/100", "KevlarVestFont", 0, 0, Color(255, 255, 255), TEXT_ALIGN_CENTER)
 
 	cam.End3D2D()
 
 end
-
----------------------------------[ HOOKS ]----------------------------------
-
-hook.Add("HUDPaint", "kevlarVest_HUDPaint", function()
-
-    local eyetrace = LocalPlayer():GetEyeTrace()
-
-    if eyetrace.Entity:GetClass() == "kevlar_vest" then
-        draw.DrawText(eyetrace.Entity:GetNWInt("kevlarDurability") .. "/100", "KevlarVestFont", ScrW() / 2, ScrH() / 2, Color(255, 255, 255), TEXT_ALIGN_CENTER)
-    end
-
-end)
