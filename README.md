@@ -1,6 +1,6 @@
 <div align=center style="text-align: center;">
 <h1>Realistic Armor System</h1>
-A realistic armor system addon for Garry's Mod. Equip and unequip kevlar vests with each their individual durability.
+A DISCONTINUED realistic armor system addon for Garry's Mod. Equip, unequip kevlar vests (each with their individual durability), and repair them with armor plates.
 </div>
 
 ###
@@ -15,7 +15,8 @@ A realistic armor system addon for Garry's Mod. Equip and unequip kevlar vests w
 
 	OR
 
-* Download this repository
+* Download the repository and extract its content
+* Paste the `realistic-armor-system` folder inside your `addons` folder
 
 ###
 
