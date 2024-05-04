@@ -1,8 +1,11 @@
 <div align=center style="text-align: center;">
 <h1>Realistic Armor System</h1>
 A realistic armor system addon for Garry's Mod. Equip and unequip kevlar vests with each their individual durability.
-Current model from: https://steamcommunity.com/sharedfiles/filedetails/?id=1801671498
 </div>
+
+###
+
+[Current model used]([https://www.nexusmods.com/witcher3/mods/9042](https://steamcommunity.com/sharedfiles/filedetails/?id=1801671498))
 
 ###
 
