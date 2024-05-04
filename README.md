@@ -5,7 +5,7 @@ A realistic armor system addon for Garry's Mod. Equip and unequip kevlar vests w
 
 ###
 
-[Current model used]([https://www.nexusmods.com/witcher3/mods/9042](https://steamcommunity.com/sharedfiles/filedetails/?id=1801671498))
+[Current model used](https://steamcommunity.com/sharedfiles/filedetails/?id=1801671498)
 
 ###
 
