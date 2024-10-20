@@ -7,10 +7,6 @@ A DISCONTINUED realistic armor system addon for Garry's Mod. Equip and unequip k
 
 ## 📖 Installation
 
-* Subscribe to the addon on the workshop and like it
-
-	OR
-
 * Download the repository and extract its content
 * Paste the `realistic-armor-system` folder inside your `addons` folder
 
