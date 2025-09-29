@@ -12,7 +12,7 @@ A DISCONTINUED realistic armor system addon for Garry's Mod. Equip and unequip k
 
 ## 📄 License
 
-[GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
+[MIT License](https://choosealicense.com/licenses/mit/)
 
 ## 🔗 Links
 
