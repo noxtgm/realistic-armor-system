@@ -1,6 +1,6 @@
 # Realistic Armor System
 
-A DISCONTINUED realistic armor system addon for Garry's Mod. Equip and unequip kevlar vests (each with their individual durability), as well as repair them with armor plates. Equipped armor vests show up as a 3D model on the player alongside with sound effects.
+A DISCONTINUED realistic armor addon for Garry's Mod. Equip and unequip kevlar vests (each with their individual durability), as well as repair them with armor plates. Equipped armor vests show up as a 3D model on the player alongside with sound effects.
 
 > [!NOTE]
 > [Model currently used](https://steamcommunity.com/sharedfiles/filedetails/?id=1801671498)
